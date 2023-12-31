@@ -2,7 +2,7 @@ import time
 
 
 def fibonacci_partial_sum_naive(from_, to):
-    start = time.time()
+    # start = time.time()
 
     _sum = 0
 
@@ -14,8 +14,8 @@ def fibonacci_partial_sum_naive(from_, to):
             _sum += current
 
         current, _next = _next % 10, (current + _next) % 10
-    end = time.time()
-    print(end-start)
+    # end = time.time()
+    # print(end-start)
     return _sum % 10
 
 

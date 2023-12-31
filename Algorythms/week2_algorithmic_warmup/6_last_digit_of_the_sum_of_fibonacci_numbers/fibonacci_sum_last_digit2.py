@@ -8,7 +8,7 @@ def fibonacci_sum(n):
         previous, current = current % 10, (previous + current) % 10
         _sum += current % 10
 
-    return _sum
+    return _sum % 10
 
 
 if __name__ == '__main__':

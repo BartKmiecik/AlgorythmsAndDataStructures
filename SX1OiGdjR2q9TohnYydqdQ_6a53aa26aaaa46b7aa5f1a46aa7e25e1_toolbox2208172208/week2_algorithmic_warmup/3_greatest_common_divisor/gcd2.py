@@ -1,6 +1,4 @@
 import time
-
-
 def gcd(a, b):
     start = time.time()
     reminder = a % b
@@ -10,7 +8,7 @@ def gcd(a, b):
         reminder = a % b
 
     end = time.time()
-    print(end - start)
+    # print(end - start)
     # print(b)
     return b
 

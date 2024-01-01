@@ -19,7 +19,7 @@ def optimal_value(capacity, weights, values):
     # for n in stuff_lst:
     #     print(n.value_per_unit)
     # print(capacity > 0)
-    while capacity > 0:
+    while capacity > 0 and len(stuff_lst)>0:
         # print(capacity)
         amount = min(stuff_lst[-1].weights, capacity)
         # print(amount)

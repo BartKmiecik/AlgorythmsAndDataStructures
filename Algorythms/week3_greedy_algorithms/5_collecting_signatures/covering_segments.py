@@ -7,12 +7,12 @@ Segment = namedtuple('Segment', 'start end')
 def optimal_points(segments):
     points = []
     cp_segments = copy.copy(segments)
+    # print(cp_segments)
+    cp_segments = sorted(cp_segments, key= lambda x: x.end, reverse=True)
+    # print(cp_segments)
     while len(cp_segments) > 0:
-        shortes_end = 999999
-        for s in cp_segments:
-            if shortes_end > int(s.end):
-                shortes_end = int(s.end)
-
+        shortes_end = cp_segments[-1].end
+        # print(f'Length {len(cp_segments)}, end {shortes_end}')
         points.append(shortes_end)
         for s in reversed(range(len(cp_segments)+1)):
             # print(s)

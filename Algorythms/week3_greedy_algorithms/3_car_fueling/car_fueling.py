@@ -3,23 +3,24 @@ from sys import stdin
 
 def min_refills(distance, tank, stops):
     stop_count = 0
-    max_distance = tank
-    counter = 0
-    while max_distance < distance:
-        # print(stop_count)
-        if counter == len(stops)-1:
-            if stops[-1] <= max_distance:
-                max_distance += stops[-1]
-                stop_count +=1
-                if max_distance > distance:
-                    break
-            stop_count = -1
-            break
-        if stops[counter] <= max_distance:
-            counter += 1
-        else:
-            max_distance = stops[counter-1] + tank
+    traveled = tank
+    for i in range(len(stops)):
+        if stops[i] < traveled and i < len(stops)-1:
+            pass
+        elif stops[i] == traveled:
             stop_count += 1
+            traveled = stops[i] + tank
+        elif i == len(stops)-1:
+            stop_count += 1
+            traveled = stops[i] + tank
+        else:
+            stop_count += 1
+            traveled = stops[i-1] + tank
+        # print(f'Station on {stops[i]}, max tank {traveled}')
+
+    if traveled < distance:
+        stop_count = -1
+
     # write your code here
     return stop_count
 

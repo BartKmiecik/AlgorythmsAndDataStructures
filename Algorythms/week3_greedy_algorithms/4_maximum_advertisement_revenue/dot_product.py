@@ -3,9 +3,14 @@ from itertools import permutations
 
 def max_dot_product(first_sequence, second_sequence):
     max_product = 0
-    for permutation in permutations(second_sequence):
-        dot_product = sum(first_sequence[i] * permutation[i] for i in range(len(first_sequence)))
-        max_product = max(max_product, dot_product)
+    first_sequence.sort(reverse=True)
+    second_sequence.sort(reverse=True)
+
+    for n in range(len(first_sequence)):
+        max_product += first_sequence[n] * second_sequence[n]
+    # for permutation in permutations(second_sequence):
+    #     dot_product = sum(first_sequence[i] * permutation[i] for i in range(len(first_sequence)))
+    #     max_product = max(max_product, dot_product)
 
     return max_product
 

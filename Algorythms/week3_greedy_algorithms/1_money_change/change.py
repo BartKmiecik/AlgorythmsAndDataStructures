@@ -1,7 +1,11 @@
 def change(money):
-    # write your code here
-
-    return money
+    coins = [10, 5, 1]
+    min_coins = 0
+    for coin in coins:
+        res = int(money / coin)
+        min_coins += res
+        money -= res * coin
+    return min_coins
 
 
 if __name__ == '__main__':

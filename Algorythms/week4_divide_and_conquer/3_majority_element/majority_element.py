@@ -5,6 +5,9 @@ def majority_element_naive(elements):
 
     return 0
 
+def majority_element(elements):
+
+    pass
 
 if __name__ == '__main__':
     input_n = int(input())

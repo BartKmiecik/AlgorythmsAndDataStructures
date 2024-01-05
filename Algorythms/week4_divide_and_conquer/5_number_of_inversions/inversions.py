@@ -13,7 +13,7 @@ def merge(arr, temp, left, mid, right):
             i += 1
         else:
             temp[k] = arr[j]
-            num_of_inversions += 1
+            num_of_inversions += mid - i + 1
             j += 1
         k += 1
 

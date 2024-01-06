@@ -7,9 +7,11 @@ def binary_search(keys, query):
         result = -2
         middle = int((left + right) / 2)
         if keys[middle] == query:
-            while middle > 0 and keys[middle] == keys[middle-1]:
-                middle -= 1
-            result = middle
+            if keys[middle] == keys[middle-1]:
+                result = -2
+                right = middle
+            else:
+                result = middle
         if keys[middle] > query:
             right = middle
         if keys[middle] < query:

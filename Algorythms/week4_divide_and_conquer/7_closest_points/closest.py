@@ -9,6 +9,7 @@ Point = namedtuple('Point', 'x y')
 
 
 def distance_squared(first_point, second_point):
+    print(f'F1: {first_point}, f2: {second_point}')
     return (first_point.x - second_point.x) ** 2 + (first_point.y - second_point.y) ** 2
 
 
@@ -100,4 +101,4 @@ if __name__ == '__main__':
 
     # print(quick_sort(input_points, 0, len(input_points)-1, 'x'))
     # print("{0:.9f}".format(sqrt(minimum_distance_squared_naive(input_points))))
-    print("{0:.9f}".format(sqrt(minimum_distance_squared(input_points))))
+    print("{0:.9f}".format(minimum_distance_squared(input_points)))

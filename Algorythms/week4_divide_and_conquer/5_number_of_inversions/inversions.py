@@ -1,48 +1,43 @@
 from itertools import combinations
 
+def merge_sort(arr, num_of_inversion) -> int:
 
-def merge(arr, temp, left, mid, right):
-    i = left
-    k = left
-    j = mid + 1
-    num_of_inversions = 0
+    if len(arr) > 1:
+        # print(arr)
+        mid = int(len(arr)/2)
 
-    while i <= mid and j <= right:
-        if arr[i] < arr[j]:
-            temp[k] = arr[i]
+        left = arr[:mid]
+        right = arr[mid:]
+
+        merge_sort(left, num_of_inversion)
+        merge_sort(right, num_of_inversion)
+
+        g = i = j = k = 0
+
+        while i < len(left) and j < len(right):
+            # print(f'i: {i}, mid: {mid}, j: {j}, end: {len(arr)-1}, J<end: {j < len(right)}')
+            if left[i] <= right[j]:
+                arr[k] = left[i]
+                i += 1
+            else:
+                arr[k] = right[j]
+                j += 1
+                g = len(left) + j - i
+                num_of_inversion += g
+                # print(f'G: {g}, i: {i}, left[i]: {left[i]}, j: {j-1}, right[j]: {right[j-1]}')
+            k += 1
+
+        while i < len(left):
+            arr[k] = left[i]
             i += 1
-        else:
-            temp[k] = arr[j]
-            num_of_inversions += mid - i + 1
+            k += 1
+
+        while j < len(right):
+            arr[k] = right[j]
             j += 1
-        k += 1
-
-    while i <= mid:
-        temp[k] = arr[i]
-        k += 1
-        i += 1
-
-    while j <= right:
-        temp[k] = arr[j]
-        k += 1
-        j += 1
-
-    return num_of_inversions
-
-
-def merge_sort(arr, temp, left, right) -> int:
-    num_of_inversions = 0
-
-    if left < right:
-        mid = int((left + right)/2)
-
-        num_of_inversions += merge_sort(arr, temp, left, mid)
-
-        num_of_inversions += merge_sort(arr, temp, mid + 1, right)
-
-        num_of_inversions += merge(arr, temp, left, mid, right)
-
-    return num_of_inversions
+            k += 1
+    # print(arr)
+    return num_of_inversion
 
 
 def inversions_naive(a):
@@ -54,9 +49,7 @@ def inversions_naive(a):
 
 
 def inversion(a):
-    n = len(a)
-    temp_array = [0] * n
-    return merge_sort(a, temp_array, 0, n-1)
+    return merge_sort(a, 0)
 
 
 if __name__ == '__main__':

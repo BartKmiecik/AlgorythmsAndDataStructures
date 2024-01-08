@@ -7,11 +7,23 @@ def binary_search(keys, query):
         result = -2
         middle = int((left + right) / 2)
         if keys[middle] == query:
-            if keys[middle] == keys[middle-1]:
-                result = -2
-                right = middle
-            else:
-                result = middle
+            while middle > 1000000 and keys[middle] == keys[middle-1000000]:
+                middle -= 1000000
+            while middle > 100000 and keys[middle] == keys[middle-100000]:
+                middle -= 100000
+            while middle > 10000 and keys[middle] == keys[middle-10000]:
+                middle -= 10000
+            while middle > 1000 and keys[middle] == keys[middle-1000]:
+                middle -= 1000
+            while middle > 100 and keys[middle] == keys[middle-100]:
+                middle -= 100
+            while middle > 10 and keys[middle] == keys[middle-10]:
+                middle -= 10
+            while middle > 5 and keys[middle] == keys[middle-5]:
+                middle -= 5
+            while middle > 0 and keys[middle] == keys[middle-1]:
+                middle -= 1
+            result = middle
         if keys[middle] > query:
             right = middle
         if keys[middle] < query:

@@ -1,7 +1,9 @@
 def change(money):
-    # write your code here
+    # denomination: 1 3 4
+    if money > 3:
+        money = (money // 4) + 1
 
-    return money
+    return int(money)
 
 
 if __name__ == '__main__':

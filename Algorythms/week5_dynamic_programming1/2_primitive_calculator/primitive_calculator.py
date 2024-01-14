@@ -28,7 +28,7 @@ def forward_pass(n):
 
 def backward_pass(n):
     result.append(n)
-    if n > 2:
+    if n > 1:
         values = {}
         values[n-1] = m[n-1]
         values[n//2] = m[n//2] + n % 2

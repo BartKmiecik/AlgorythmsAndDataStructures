@@ -2,7 +2,7 @@ from sys import stdin
 
 
 def points_cover_naive(starts, ends, points):
-    print(f'Start {starts}, ends: {ends}')
+    # print(f'Start {starts}, ends: {ends}')
     assert len(starts) == len(ends)
     count = [0] * len(points)
 
@@ -120,5 +120,5 @@ if __name__ == '__main__':
     merge_sort(input_starts, input_ends)
     # print(f'Start: {input_starts}, end: {input_ends}')
 
-    output_count = points(input_starts, input_ends, input_points)
+    output_count = points_cover_naive(input_starts, input_ends, input_points)
     print(*output_count)

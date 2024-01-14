@@ -40,7 +40,6 @@ def partitione(array ,left, right, axis):
     return i-1
 
 def quick_sort(array, left, right, axis):
-    # print(array)
     if left < right:
         k = random.randint(left, right)
         array[k], array[left] = array[left], array[k]
@@ -52,7 +51,6 @@ def quick_sort(array, left, right, axis):
 def brute_force(points):
     min_distance = 99999999
     for i in range(len(points)-1):
-        # print(f'P1: {points[i].x - points[i+1].x}, squared: {(points[i].x - points[i+1].x) ** 2}')
         distance = math.sqrt((points[i].x - points[i+1].x) ** 2 + (points[i].y - points[i+1].y) ** 2)
         if distance < min_distance:
             min_distance = distance
@@ -73,6 +71,8 @@ def strip_closest(points: list, mid_dist):
     return mid_dist
 
 def minimum_distance_squared(points: list):
+    if len(points) <= 1:
+        return 0
     if len(points) <= 3:
         return brute_force(points)
     mid = len(points)//2

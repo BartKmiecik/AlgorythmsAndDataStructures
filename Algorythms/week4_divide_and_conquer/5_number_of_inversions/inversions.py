@@ -3,7 +3,6 @@ from itertools import combinations
 def merge_sort(arr, num_of_inversion) -> int:
 
     if len(arr) > 1:
-        # print(arr)
         mid = int(len(arr)/2)
 
         left = arr[:mid]
@@ -12,19 +11,18 @@ def merge_sort(arr, num_of_inversion) -> int:
         merge_sort(left, num_of_inversion)
         merge_sort(right, num_of_inversion)
 
-        g = i = j = k = 0
+        i = j = k = 0
 
         while i < len(left) and j < len(right):
-            # print(f'i: {i}, mid: {mid}, j: {j}, end: {len(arr)-1}, J<end: {j < len(right)}')
             if left[i] <= right[j]:
                 arr[k] = left[i]
                 i += 1
             else:
                 arr[k] = right[j]
                 j += 1
-                g = len(left) + j - i
+                g = mid - i + 1
+                # g = mid - i
                 num_of_inversion += g
-                # print(f'G: {g}, i: {i}, left[i]: {left[i]}, j: {j-1}, right[j]: {right[j-1]}')
             k += 1
 
         while i < len(left):
@@ -36,7 +34,6 @@ def merge_sort(arr, num_of_inversion) -> int:
             arr[k] = right[j]
             j += 1
             k += 1
-    # print(arr)
     return num_of_inversion
 
 
@@ -49,6 +46,8 @@ def inversions_naive(a):
 
 
 def inversion(a):
+    # if len(a) <= 1:
+    #     return 0
     return merge_sort(a, 0)
 
 

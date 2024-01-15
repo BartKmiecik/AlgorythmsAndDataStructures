@@ -4,10 +4,14 @@ def lcs2(first_sequence, second_sequence, grid, i ):
     result = 0
     for n in range(len(first_sequence)):
         if first_sequence[n] in second_sequence and i < first_sequence[n]:
-            result =1
+            result = 1
             index = second_sequence.index(first_sequence[n])
             result += lcs2(first_sequence[n+1:], second_sequence[index+1:], grid, first_sequence[n])
-            grid[first_sequence[n]] = result
+            if not first_sequence[n] in grid:
+                grid[first_sequence[n]] = result
+            else:
+                var = grid[first_sequence[n]]
+                grid[first_sequence[n]] = max(result, var)
 
     # print(grid)
 

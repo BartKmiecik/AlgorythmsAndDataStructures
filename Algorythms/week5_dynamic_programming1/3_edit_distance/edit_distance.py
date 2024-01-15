@@ -18,5 +18,8 @@ if __name__ == "__main__":
     grid = dict()
     i = len(word1)
     j = len(word2)
-    print(edit_distance(word1, word2, i, j, grid))
-    print(grid)
+    result = edit_distance(word1, word2, i, j, grid)
+    if result == 0 and i != j:
+        result = 1
+    print(result)
+    # print(grid)

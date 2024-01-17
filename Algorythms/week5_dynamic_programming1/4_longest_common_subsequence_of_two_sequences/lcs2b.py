@@ -1,12 +1,13 @@
 def lcs2(first_sequence, second_sequence):
     if len(first_sequence) == 0 or len(second_sequence) == 0:
         return 0
-    result = 0
+    result,res1 = 0, 0
     index = -1
     if first_sequence[0] in second_sequence:
-        result += 1
         index = second_sequence.index(first_sequence[0])
-    result += lcs2(first_sequence[1:], second_sequence[index + 1:])
+        res1 = lcs2(first_sequence[1:], second_sequence[index + 1:]) + 1
+    res2 = lcs2(first_sequence[1:], second_sequence)
+    result += max(res1, res2)
     return result
 
 

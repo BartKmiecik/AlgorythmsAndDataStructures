@@ -13,7 +13,7 @@ def lcs2(first_sequence, second_sequence,n, m, memo = {}):
     if first_sequence[0] in second_sequence:
         res1 = lcs2(first_sequence[1:], second_sequence[index + 1:], n, m) + 1
     res2 = lcs2(first_sequence[1:], second_sequence, n, m)
-    result += max(res1, res2)
+    result = max(res1, res2)
     memo[key] = result
 
     return result

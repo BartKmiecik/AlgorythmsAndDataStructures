@@ -41,7 +41,7 @@ def partition3(values:list):
     total_sum = sum(values)
     third_of_sum = total_sum // 3
     var = all(i > third_of_sum for i in values)
-    if len(values) < 4 or total_sum % 3 != 0 or all(i > third_of_sum for i in values):
+    if len(values) < 3 or total_sum % 3 != 0 or all(i > third_of_sum for i in values):
         return 0
     values = sorted(values, reverse=True)
     new_poss = check_possibilities(values, third_of_sum)

@@ -4,7 +4,7 @@ from sys import stdin
 def max_gold(capacity, weights:list, value = 0):
     rest_weights = copy.copy(weights)
     for n in weights:
-        if n < capacity:
+        if n <= capacity:
             rest = capacity - n
             rest_weights.remove(n)
             value += n

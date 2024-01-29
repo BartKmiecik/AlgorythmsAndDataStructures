@@ -3,17 +3,19 @@ from sys import stdin
 
 
 def table_counting(capacity: int, weights: list):
-    row, cols = capacity, len(weights)
-    arr = [[0]*row]*cols
+    weights.append(0)
+    weights = sorted(weights)
+    row, cols = capacity+1, len(weights)
+    arr = [[0 for i in range(row)] for j in range(cols)]
     # print(arr)
     for i in range(cols):
         for j in range(row):
             # print(f'I:{i}, j:{j}, weight: {weights[i]}')
             temp = j-weights[i]
-            var = 0 if temp < 0 else weights[i]
+            var = 0 if temp < 0 else arr[i-1][temp] + weights[i]
             arr[i][j] = max(arr[i-1][j], var)
             # print(f'i:{i}, j:{j}, arr[i][j]: {arr[i][j]}')
-    # print(arr)
+    print(arr)
     return arr[cols-1][row-1]
 
 # def max_gold(capacity, weights:list, value = 0):

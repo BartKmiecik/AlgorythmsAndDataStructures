@@ -15,7 +15,7 @@ def table_counting(capacity: int, weights: list):
             var = 0 if temp < 0 else arr[i-1][temp] + weights[i]
             arr[i][j] = max(arr[i-1][j], var)
             # print(f'i:{i}, j:{j}, arr[i][j]: {arr[i][j]}')
-    print(arr)
+    # print(arr)
     return arr[cols-1][row-1]
 
 # def max_gold(capacity, weights:list, value = 0):

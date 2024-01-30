@@ -3,6 +3,7 @@ from sys import stdin
 
 
 def check_possibilities(values, goal):
+    values = sorted(values, reverse=True)
     new_values = copy.copy(values)
     current = 0
     for i in values:
@@ -16,7 +17,8 @@ def check_possibilities(values, goal):
                     new_values.remove(j)
                     current += j
                 if current == goal * 2:
-                    return True
+                    if sum(values) - (goal * 2) == goal:
+                        return True
     for i in range(1,len(values)-1):
         new_values = copy.copy(values)
         current = 0
@@ -31,7 +33,8 @@ def check_possibilities(values, goal):
                     new_values.remove(j)
                     current += j
                 if current == goal * 2:
-                    return True
+                    if sum(values) - (goal * 2) == goal:
+                        return True
 
     return False
 
